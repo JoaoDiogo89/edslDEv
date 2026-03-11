@@ -1,6 +1,6 @@
 
 
-Body
+Body 
 How do I upload a folder that contains all my code files to my Github repo using Github's REST API programmatically? Can anyone help me do that in JavaScript with Node.js?
 
 Currently, when I try to run my code, it only uploads files, but how do I upload a folder instead? I don't want to upload files one by one. Any idea what to do?
