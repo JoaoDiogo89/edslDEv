@@ -1,0 +1,44 @@
+What GitHub Actions topic or product is this about?
+General
+
+Discussion Details
+Hello, I am the maintainer of a project in which we publish Python wheels to PyPI. The code consists for a large part of C++ Python modules, which we compile using cibuildwheel. Lately, my wheel builds have started to fail massively with the following error:
+
+  + Download https://github.com/pypa/get-virtualenv/blob/20.26.3/public/virtualenv.pyz?raw=true to C:\Users\runneradmin\AppData\Local\pypa\cibuildwheel\Cache\virtualenv-20.26.3.pyz
+  Traceback (most recent call last):
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\runpy.py", line 196, in _run_module_as_main
+      return _run_code(code, main_globals, None,
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\runpy.py", line 86, in _run_code
+      exec(code, run_globals)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\__main__.py", line 422, in <module>
+      main()
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\__main__.py", line 49, in main
+      main_inner(global_options)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\__main__.py", line 184, in main_inner
+      build_in_directory(args)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\__main__.py", line 352, in build_in_directory
+      platform_module.build(options, tmp_path)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\windows.py", line 391, in build
+      base_python, env = setup_python(
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\windows.py", line 266, in setup_python
+      env = virtualenv(
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\util.py", line 681, in virtualenv
+      virtualenv_app = _ensure_virtualenv(version)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\util.py", line 612, in _ensure_virtualenv
+      download(url, path)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\site-packages\cibuildwheel\util.py", line 337, in download
+      with urllib.request.urlopen(url, context=context) as response:
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\urllib\request.py", line 216, in urlopen
+      return opener.open(url, data, timeout)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\urllib\request.py", line 525, in open
+      response = meth(req, response)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\urllib\request.py", line 634, in http_response
+      response = self.parent.error(
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\urllib\request.py", line 563, in error
+      return self._call_chain(*args)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\urllib\request.py", line 496, in _call_chain
+      result = func(*args)
+    File "C:\hostedtoolcache\windows\Python\3.10.11\x64\lib\urllib\request.py", line 643, in http_error_default
+      raise HTTPError(req.full_url, code, msg, hdrs, fp)
+  urllib.error.HTTPError: HTTP Error 429: Too Many Requests
+Does anyone know what could be the cause of this?
