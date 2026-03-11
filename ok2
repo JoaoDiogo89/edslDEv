@@ -1,6 +1,3 @@
-What GitHub Actions topic or product is this about?
-General
-
 Discussion Details
 Hello, I am the maintainer of a project in which we publish Python wheels to PyPI. The code consists for a large part of C++ Python modules, which we compile using cibuildwheel. Lately, my wheel builds have started to fail massively with the following error:
 
